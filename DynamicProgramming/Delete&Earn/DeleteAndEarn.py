@@ -27,3 +27,25 @@ class Solution(object):
         
         return recurse(max_number)
             
+
+
+class Solution:
+    def deleteAndEarn(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        points = defaultdict(int)
+        max_number = 0
+        # Precompute how many points we gain from taking an element
+        for num in nums:
+            points[num] += num
+            max_number = max(max_number, num)
+
+        one_back = points.get(1, 0)
+        two_back = 0
+
+        for i in range(2, max_number + 1):
+            two_back, one_back = one_back, max(one_back, two_back + points.get(i, 0))
+        return one_back
+
