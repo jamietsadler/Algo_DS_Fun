@@ -48,4 +48,4 @@ class Solution:
         for i in range(2, max_number + 1):
             two_back, one_back = one_back, max(one_back, two_back + points.get(i, 0))
         return one_back
-
+        
