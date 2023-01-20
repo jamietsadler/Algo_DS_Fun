@@ -29,3 +29,27 @@ class Solution:
         
         recurse(root)
         return self.ans
+
+
+class Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        if not root:
+            return None
+        p_val = p.val
+        q_val = q.val
+        
+        while root:
+            if root.val > p_val and root.val > q_val:
+                root = root.left
+            elif root.val < p_val and root.val < q_val:
+                root = root.right
+            else:
+                return root
+            
+        return None
