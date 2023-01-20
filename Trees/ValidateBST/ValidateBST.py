@@ -29,3 +29,23 @@ class Solution:
             return (helper(node.left, low, node.val) and helper(node.right, node.val, high))
         
         return helper(root)
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        
+        stack = [(root, -math.inf, math.inf)]
+        
+        while stack:
+            node, low, high = stack.pop()
+            if not node:
+                continue
+            
+            if node.val <= low or node.val >= high:
+                return False
+            stack.append((node.left, low, node.val))
+            stack.append((node.right, node.val, high))
+        
+        return True
+        
