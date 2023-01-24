@@ -1,3 +1,7 @@
+from typing import List
+from collections import defaultdict
+
+
 class Solution:
     def solveSudoku(self, board: List[List[str]]) -> None:
         """
