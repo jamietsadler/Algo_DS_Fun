@@ -15,3 +15,26 @@ class Solution:
             return ans
         
         return recurse(0, tuple(nums))
+
+
+class Solution(object):
+    def maximumScore(self, nums, multipliers):
+        """
+        :type nums: List[int]
+        :type multipliers: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+        m = len(multipliers)
+        n = len(nums)
+
+        dp = [0]*(m+1)
+
+        for op in range(m-1, -1, -1):
+            for i in range(0, op+1):
+                l = dp[i+1] + nums[i]*multipliers[op]
+                r = dp[i]+ nums[(n-1)-(op-i)]*multipliers[op]
+                dp[i] = max(l, r)
+
+        return dp[0]
