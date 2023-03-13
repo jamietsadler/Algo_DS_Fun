@@ -1,3 +1,4 @@
+from typing import Optional, TreeNode
 
 class Solution(object):
     def hasPathSum(self, root, targetSum):
@@ -22,3 +23,16 @@ class Solution(object):
                 stack.append((root.right, total + root.right.val))   
         return False
             
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        
+        if not root:
+            return False
+
+        targetSum -= root.val
+        
+        if not root.left and not root.right:
+            return targetSum == 0
+
+
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
