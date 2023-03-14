@@ -1,4 +1,5 @@
 from typing import Optional, TreeNode
+from collections import deque
 
 class Solution(object):
     def invertTree(self, root):
