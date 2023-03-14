@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, heapq
 
 class Solution(object):
     def minCostToSupplyWater(self, n, wells, pipes):
