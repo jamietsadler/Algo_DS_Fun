@@ -1,4 +1,26 @@
 
+# O(m+n)
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2) -> float:
+        m, n = len(nums1), len(nums2)
+        merged = []
+        i, j = 0, 0
+        while i < m and j < n:
+            if nums1[i] < nums2[j]:
+                merged.append(nums1[i])
+                i += 1
+            else:
+                merged.append(nums2[j])
+                j += 1
+        merged += nums1[i:]
+        merged += nums2[j:]
+        total = m + n
+        if total % 2 == 0:
+            return (merged[total // 2 - 1] + merged[total // 2]) / 2
+        else:
+            return merged[total // 2]
+
+# O(log(m+n))
 def findMedianSortedArrays(self, A, B):
     l = len(A) + len(B)
     if l % 2 == 1:
