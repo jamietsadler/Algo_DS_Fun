@@ -14,7 +14,40 @@ class Solution(object):
 
         return dp[len(s)]
 
+class Solution(object):
+    def __init__(self):
+        self.memo = {}
 
+    def numDecodings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+
+        memo = {}
+
+        def helper(idx):
+            if idx == len(s):
+                return 1
+            
+            if s[idx] == '0':
+                return 0
+
+            if idx  == len(s) - 1:
+                return 1
+
+            if idx in memo:
+                return memo[idx]
+            
+            ans = helper(idx+1)
+            if int(s[idx:idx+2]) <= 26:
+                ans += helper(idx+2)
+            
+            memo[idx] = ans
+            return ans
+        
+        return helper(0)
+    
 class Solution(object):
     def __init__(self):
         self.memo = {}
