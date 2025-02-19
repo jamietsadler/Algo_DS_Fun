@@ -54,7 +54,24 @@ class Solution:
         
         return solve(0,0)
     
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
 
+        dp= [1] * m
+
+        for j in range(1, n):
+            for i in range(1, m):
+                dp[i] += dp[i-1]
+
+        return dp[-1]
+
+        
+        
 class Solution(object):
     def uniquePathsWithObstacles(self, obstacleGrid):
         """
