@@ -1,6 +1,23 @@
 from typing import List
 from functools import cache
 
+
+class Solution(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        furthest = 0
+
+        for i in range(len(nums)-1):
+            furthest = max(furthest, i + nums[i])
+
+            if furthest == i:
+                return False
+        return True
+    
+    
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         n = len(nums) -1 
