@@ -30,6 +30,20 @@ class Solution:
         recurse(root)
         return self.ans
 
+class Solution:
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        
+        p_path = []
+
+        while p:
+            p_path.append(p)
+            p = p.parent
+        while q:
+            if q in p_path:
+                return q
+            q = q.parent
+        
+        return None
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
         """
